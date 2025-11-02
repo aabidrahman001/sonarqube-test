@@ -57,10 +57,10 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}   # ✅ built-in token
-          publish_dir: ./dist/sonarqube-test          # Angular 18 standalone build output
-          keep_files: true                             # keeps any existing files on gh-pages
-          force_orphan: true                           # safely create gh-pages branch if missing
+          github_token: ${{ secrets.GH_PAT }}
+          publish_dir: ./dist/sonarqube-test
+          keep_files: true
+          force_orphan: true
 
   zap-scan:
     runs-on: ubuntu-latest
