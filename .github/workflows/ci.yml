@@ -61,7 +61,7 @@ jobs:
           #github_token: ${{ secrets.GITHUB_TOKEN }}
           # OR uncomment if you prefer a PAT:
           github_token: ${{ secrets.GH_PAT }}
-          publish_dir: ./dist/sonarqube-test
+          publish_dir: ./dist/sonarqube-test/browser/
           keep_files: true
           force_orphan: true
 
