@@ -29,7 +29,7 @@ jobs:
         run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage
 
       - name: Build Angular app
-        run: npm run build
+        run: npm run build -- --base-href="/sonarqube-test/"
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v2
@@ -52,11 +52,14 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build
+        run: npm run build -- --base-href="/sonarqube-test/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
+          # You can use either:
+          #github_token: ${{ secrets.GITHUB_TOKEN }}
+          # OR uncomment if you prefer a PAT:
           github_token: ${{ secrets.GH_PAT }}
           publish_dir: ./dist/sonarqube-test
           keep_files: true
@@ -66,8 +69,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: deploy-gh-pages
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Wait for GitHub Pages to be live
+        run: sleep 120
 
       - name: Run OWASP ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.10.0
