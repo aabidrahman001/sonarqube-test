@@ -84,7 +84,8 @@ jobs:
           rules_file_name: 'zap-rules.yml'
           cmd_options: '-a'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_PAT }}
 
       - name: Upload ZAP report
         uses: actions/upload-artifact@v4
