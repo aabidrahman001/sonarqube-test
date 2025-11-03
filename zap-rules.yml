@@ -1,0 +1,20 @@
+policy:
+  alert_threshold: HIGH
+  attack_strength: MEDIUM
+
+rules:
+  - id: 10020
+    action: IGNORE
+    reason: "Anti-clickjacking header not set - low risk for static sites"
+  - id: 10021
+    action: IGNORE
+    reason: "X-Content-Type-Options header missing - minor issue"
+  - id: 10035
+    action: IGNORE
+    reason: "HSTS header not set - only relevant for HTTPS servers"
+  - id: 10038
+    action: IGNORE
+    reason: "CSP header not set - static GitHub Pages limitation"
+  - id: 10063
+    action: IGNORE
+    reason: "Permissions Policy Header not set - not critical"

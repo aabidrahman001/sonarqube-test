@@ -1,4 +1,0 @@
-policy:
-  alert_threshold: HIGH
-  attack_strength: MEDIUM
-
