@@ -70,13 +70,13 @@ jobs:
     needs: deploy-gh-pages
     steps:
       - name: Wait for GitHub Pages to be live
-        run: sleep 120
+        run: sleep 60
 
       - name: Run OWASP ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.10.0
+        uses: zaproxy/action-baseline@v0.8.0
         with:
-          target: 'https://aabidrahman001.github.io/sonarqube-test/'
-          rules_file_name: 'zap-rules.yml'
+          target: 'https://aabidrahman001.github.io/sonarqube-test/index.html'
+          rules_file_name: './zap-rules.yml'
           cmd_options: '-a'
 
       - name: Upload ZAP report
